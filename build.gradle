@@ -17,6 +17,10 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	runtimeOnly 'mysql:mysql-connector-java'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
 	compile 'javax.servlet:jstl'
 	compile 'org.apache.tomcat.embed:tomcat-embed-jasper'
 	compile 'org.sitemesh:sitemesh:3.0.1'
