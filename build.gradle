@@ -16,6 +16,8 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+
+	compile 'org.apache.tomcat.embed:tomcat-embed-jasper'
 }
 
 test {
