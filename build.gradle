@@ -18,6 +18,7 @@ dependencies {
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 
 	compile 'org.apache.tomcat.embed:tomcat-embed-jasper'
+	compile 'org.sitemesh:sitemesh:3.0.1'
 }
 
 test {
