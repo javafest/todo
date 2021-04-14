@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <%--
   User: erfan
   Date: 4/14/21
@@ -17,7 +19,7 @@
         <div class="col-sm"></div>
 
         <div class="col-sm">
-            <legend>Welcome to Therap Javafest</legend>
+            <legend>Welcome to ${name}</legend>
         </div>
 
         <div class="col-sm"></div>
