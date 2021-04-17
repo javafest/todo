@@ -5,10 +5,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import therap.javafest.todo.domain.Task;
 import therap.javafest.todo.domain.User;
 import therap.javafest.todo.service.TaskService;
@@ -25,6 +22,7 @@ import javax.validation.Valid;
 public class TaskController {
 
     private static final String SHOW_PAGE = "task/show";
+    private static final String EDIT_PAGE = "task/edit";
 
     @Autowired
     private UserService userService;
@@ -52,6 +50,31 @@ public class TaskController {
         }
 
         task.setUser(getLoggedInUser());
+        taskService.save(task);
+
+        return "redirect:/task/show";
+    }
+
+    @GetMapping(value = "/edit")
+    public String edit(@RequestParam("id") int id,
+                       ModelMap model) {
+
+        model.put("task", taskService.getById(id));
+
+        return EDIT_PAGE;
+    }
+
+    @PostMapping(value = "/edit")
+    public String update(@Valid @ModelAttribute("task") Task task,
+                       BindingResult result,
+                       ModelMap model) {
+
+        if (result.hasErrors()) {
+            model.put("task", task);
+
+            return EDIT_PAGE;
+        }
+
         taskService.save(task);
 
         return "redirect:/task/show";

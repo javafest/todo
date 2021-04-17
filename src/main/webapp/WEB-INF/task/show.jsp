@@ -10,22 +10,13 @@
 <html>
 <head>
     <title>Task List</title>
-
-    <link rel="stylesheet" type="text/css" href="/font-awesome-5.15.3/css/all.css">
-
-    <style>
-        .link {
-            text-decoration: none;
-            color: inherit;
-        }
-    </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="row" style="padding-top: 10%">
+    <div class="row" style="padding-top: 5%">
 
-        <div class="col-md-4">
+        <div class="col-md-4 left-pane">
             <div class="row">
                 <a href="/auth/welcome">Go to dashboard</a>
             </div>
@@ -33,7 +24,7 @@
 
         <div class="col-md-4">
             <div class="mb-3">
-                <legend>
+                <legend style="margin-bottom: 10%">
                         <a href="/auth/welcome" class="link">
                             Todo <i class="fas fa-home"></i>
                         </a>
@@ -44,11 +35,12 @@
                     <div class="col-auto">
                         <form:input type="text"
                                     path="name"
-                                    class="form-control-plaintext"
+                                    cssClass="form-control"
                                     placeholder="what to do.."
                                     autofocus="true"/>
 
                     </div>
+
                     <div class="col-auto">
                         <button type="submit" class="btn btn-primary mb-3">
                             <i class="fas fa-plus-circle"></i>
@@ -82,11 +74,11 @@
 
                     <tbody>
                         <c:forEach items="${taskList}" var="t" varStatus="i">
-                            <tr>
+                            <tr id="task-${t.id}">
                                 <td>${i.index + 1}</td>
                                 <td>${t.name}</td>
                                 <td>
-                                    <a href="#" class="link"><i class="fas fa-pen"></i></a>
+                                    <a href="/task/edit?id=${t.id}" class="link"><i class="fas fa-pen"></i></a>
                                 </td>
                                 <td><i class="fas fa-trash-alt"></i></td>
                             </tr>
