@@ -25,7 +25,7 @@
             </div>
 
             <div class="mb-3">
-                <a href="#">Go to task list</a>
+                <a href="/task/show">Go to task list</a>
             </div>
 
 <%--            logout mechanism of spring security--%>

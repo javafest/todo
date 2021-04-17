@@ -67,5 +67,4 @@ public class AuthController {
 
         return LOGIN_FORM;
     }
-
 }
