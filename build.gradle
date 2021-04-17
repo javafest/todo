@@ -26,6 +26,7 @@ dependencies {
 	compile 'org.sitemesh:sitemesh:3.0.1'
 
 	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-devtools:2.4.4'
 
 	testImplementation 'org.springframework.security:spring-security-test'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
