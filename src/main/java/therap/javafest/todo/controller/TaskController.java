@@ -66,8 +66,8 @@ public class TaskController {
 
     @PostMapping(value = "/edit")
     public String update(@Valid @ModelAttribute("task") Task task,
-                       BindingResult result,
-                       ModelMap model) {
+                         BindingResult result,
+                         ModelMap model) {
 
         if (result.hasErrors()) {
             model.put("task", task);
@@ -78,6 +78,14 @@ public class TaskController {
         taskService.save(task);
 
         return "redirect:/task/show";
+    }
+
+    @ResponseBody
+    @DeleteMapping(value = "/delete")
+    public String delete(@RequestParam("id") int id) {
+        taskService.delete(taskService.getById(id));
+
+        return "deleted";
     }
 
     private User getLoggedInUser() {

@@ -31,4 +31,9 @@ public class TaskService {
         return taskRepository.findById(id)
                 .orElse(null);
     }
+
+    @Transactional
+    public void delete(Task task) {
+        taskRepository.delete(task);
+    }
 }

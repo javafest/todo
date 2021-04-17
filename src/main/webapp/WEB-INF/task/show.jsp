@@ -10,6 +10,9 @@
 <html>
 <head>
     <title>Task List</title>
+
+    <meta name="${_csrf.parameterName}" content="${_csrf.token}"/>
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
 </head>
 <body>
 
@@ -80,7 +83,9 @@
                                 <td>
                                     <a href="/task/edit?id=${t.id}" class="link"><i class="fas fa-pen"></i></a>
                                 </td>
-                                <td><i class="fas fa-trash-alt"></i></td>
+                                <td>
+                                    <a class="link" onclick="ajaxPostAction(${t.id})"><i class="fas fa-trash-alt"></i></a>
+                                </td>
                             </tr>
                         </c:forEach>
                     </tbody>
@@ -90,5 +95,30 @@
     </div>
 </div>
 
+<script>
+    function ajaxPostAction(id) {
+        if (confirm("Are you sure, you want to delete it?")) {
+            $.ajax({
+                url: '/task/delete?id=' + id,
+                type: 'DELETE',
+                cache: false,
+                contentType: 'application/json; charset=UTF-8',
+                dataType: 'text',
+                beforeSend: function(xhr) {
+                    var token = $("meta[name='_csrf']").attr("content");
+                    var header = $("meta[name='_csrf_header']").attr("content");
+
+                    xhr.setRequestHeader(header, token);
+                },
+                success: function(data) {
+                    location.reload();
+                },
+                error: function(e) {
+                    alert("Error while deleting!");
+                }
+            });
+        }
+    }
+</script>
 </body>
 </html>
