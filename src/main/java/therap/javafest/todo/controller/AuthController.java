@@ -12,6 +12,7 @@ import therap.javafest.todo.domain.User;
 import therap.javafest.todo.service.UserService;
 
 import javax.validation.Valid;
+import java.util.Objects;
 
 /**
  * @author erfan
@@ -43,6 +44,10 @@ public class AuthController {
     public String registration(@Valid @ModelAttribute("user") User user,
                                BindingResult bindingResult) {
 
+        if (foundDuplicateUsername(user.getUsername())) {
+            bindingResult.rejectValue("username", "", "This username has already been taken!");
+        }
+
         if (bindingResult.hasErrors()) {
             return REGISTRATION_FORM;
         }
@@ -66,5 +71,11 @@ public class AuthController {
         model.put("user", new User());
 
         return LOGIN_FORM;
+    }
+
+    private boolean foundDuplicateUsername(String username) {
+        User duplicateUser = userService.findByUsername(username);
+
+        return Objects.nonNull(duplicateUser);
     }
 }

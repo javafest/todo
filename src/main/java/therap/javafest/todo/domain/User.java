@@ -20,7 +20,7 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 50, nullable = false, unique = true)
     @NotEmpty
     @Size(max = 50)
     private String username;
