@@ -13,17 +13,9 @@
 </head>
 <body>
 <div class="container">
-    <div class="row" style="padding-top: 5%">
+    <div class="row content">
 
-        <div class="col-md-4 left-pane">
-            <div class="mb-3">
-                <a href="/auth/welcome">Go to dashboard</a>
-            </div>
-
-            <div class="mb-3">
-                <a href="/task/show">Go to task list</a>
-            </div>
-        </div>
+        <div class="col-md-4"></div>
 
         <div class="col-md-4">
             <div class="mb-3">

@@ -17,13 +17,9 @@
 <body>
 
 <div class="container">
-    <div class="row" style="padding-top: 5%">
+    <div class="row content">
 
-        <div class="col-md-4 left-pane">
-            <div class="row">
-                <a href="/auth/welcome">Go to dashboard</a>
-            </div>
-        </div>
+        <div class="col-md-4"></div>
 
         <div class="col-md-4">
             <div class="mb-3">

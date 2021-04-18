@@ -25,22 +25,8 @@
             </div>
 
             <div class="mb-3">
-                <a href="/task/show">Go to task list</a>
+                This is a simple TODO Application!
             </div>
-
-<%--            logout mechanism of spring security--%>
-            <div class="mb-3">
-                <c:if test="${pageContext.request.userPrincipal.name != null}">
-                    <form id="logoutForm" method="POST" action="${contextPath}/logout" class="form-signin">
-                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-
-                        <button class="btn btn-sm btn-danger"
-                                style="margin-top: 30px"
-                                type="submit">Logout</button>
-                    </form>
-                </c:if>
-            </div>
-
         </div>
     </div>
 </div>
