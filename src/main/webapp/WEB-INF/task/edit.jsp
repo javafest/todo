@@ -37,10 +37,6 @@
 
                     <h5>Edit task</h5>
 
-                    <form:hidden path="id"/>
-                    <form:hidden path="user"/>
-                    <form:hidden path="version"/>
-
                     <div class="mb-3">
                         <div>
                             <form:input type="text"

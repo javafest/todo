@@ -19,6 +19,7 @@ import javax.validation.Valid;
  */
 @Controller
 @RequestMapping(value = "/task")
+@SessionAttributes("task")
 public class TaskController {
 
     private static final String SHOW_PAGE = "task/show";
