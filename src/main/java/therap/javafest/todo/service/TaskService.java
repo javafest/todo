@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import therap.javafest.todo.domain.Task;
+import therap.javafest.todo.domain.User;
 import therap.javafest.todo.repository.TaskRepository;
 
 import java.util.List;
@@ -23,8 +24,8 @@ public class TaskService {
         taskRepository.save(task);
     }
 
-    public List<Task> getAllTasks() {
-        return taskRepository.findAll();
+    public List<Task> getAllTasks(User user) {
+        return taskRepository.getAllByUser(user);
     }
 
     public Task getById(int id) {

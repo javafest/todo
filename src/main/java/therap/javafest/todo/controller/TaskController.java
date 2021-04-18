@@ -32,8 +32,10 @@ public class TaskController {
 
     @GetMapping(value = "/show")
     public String show(ModelMap model) {
-        model.put("task", new Task(getLoggedInUser()));
-        model.put("taskList", taskService.getAllTasks());
+        User loggedInUser = getLoggedInUser();
+
+        model.put("task", new Task(loggedInUser));
+        model.put("taskList", taskService.getAllTasks(loggedInUser));
 
         return SHOW_PAGE;
     }
@@ -43,13 +45,15 @@ public class TaskController {
                        BindingResult result,
                        ModelMap model) {
 
+        User loggedInUser = getLoggedInUser();
+
         if (result.hasErrors()) {
-            model.put("taskList", taskService.getAllTasks());
+            model.put("taskList", taskService.getAllTasks(loggedInUser));
 
             return SHOW_PAGE;
         }
 
-        task.setUser(getLoggedInUser());
+        task.setUser(loggedInUser);
         taskService.save(task);
 
         return "redirect:/task/show";
