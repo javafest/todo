@@ -1,7 +1,7 @@
 package therap.javafest.todo.domain;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
@@ -21,20 +21,26 @@ public class User implements Serializable {
     private int id;
 
     @Column(length = 50, nullable = false, unique = true)
-    @NotEmpty
+    @NotBlank
     @Size(max = 50)
     private String username;
 
     @Column(length = 10, nullable = false)
-    @NotEmpty
+    @NotBlank
     private String password;
 
     @Version
     private int version;
 
+    /**
+     * Need to use @CreationTimestamp if mysql version is higher than 5.7
+     */
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date created;
 
+    /**
+     * Need to use @UpdateTimestamp if mysql version is higher than 5.7
+     */
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date updated;
 
